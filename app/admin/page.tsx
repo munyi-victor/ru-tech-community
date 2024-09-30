@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/AuthContext";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 import { addEvent, storage } from "@/firebase/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -26,7 +26,7 @@ const Admin = () => {
     router.replace("/admin/login");
   }
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setEventData((prevData) => ({
       ...prevData,
@@ -34,8 +34,12 @@ const Admin = () => {
     }));
   };
 
-  const handlePhotoUpload = (e: any) => {
+  const handlePhotoUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
+
+    if (!selectedFile) {
+      return;
+    }
 
     const images = ref(storage, `images/${v4()}`);
     uploadBytes(images, selectedFile).then((data) => {
