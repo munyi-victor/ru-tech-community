@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 import Navbar from "@/components/Navbar";
 import { AuthProvider } from "@/lib/context/AuthContext";
@@ -35,6 +36,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}
         >
+          <Analytics />
           <Navbar />
           {children}
         </body>
