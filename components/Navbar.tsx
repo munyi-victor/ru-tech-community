@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 import { useAuth } from "@/lib/context/AuthContext";
@@ -20,10 +21,12 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <Link href="/">
-              <img
+              <Image
                 src="/logo.png"
                 alt="Rongo University Tech Community"
                 className="h-10 w-10 rounded-2xl"
+                height={10}
+                width={10}
               />
             </Link>
             <h1 className="text-xl font-bold ml-2">

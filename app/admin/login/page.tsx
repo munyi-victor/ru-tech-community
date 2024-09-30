@@ -63,8 +63,3 @@ const AdminLoginForm = () => {
     </div>
   );
 };
-
-export default AdminLoginForm;
-function acceptAdmin() {
-  throw new Error("Function not implemented.");
-}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import SocialMediaLinks from "./SocialMediaLinks";
 import { SlArrowRight } from "react-icons/sl";
 
@@ -9,10 +10,12 @@ const Footer = () => {
         <div>
           <div className="flex items-center">
             <Link href="/">
-              <img
+              <Image
                 src="/logo.png"
                 alt="Rongo University Tech Community"
                 className="h-10 w-10 rounded-2xl"
+                height={10}
+                width={10}
               />
             </Link>
             <h1 className="text-xl font-bold ml-2 text-gray-700">

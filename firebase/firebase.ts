@@ -19,7 +19,7 @@ const firebaseConfig = {
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  appId: process.env.dddd,
 };
 
 // Initialize Firebase
@@ -73,20 +73,21 @@ export const getMemberCount = async () => {
 
 // sign in admin
 export const signInAdmin = async (email: string, password: string) => {
-  await signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      return user;
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      return false;
-    });
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    // Signed in
+    const user = userCredential.user;
+    return user;
+  } catch (error: any) {
+    const errorMessage = error.message;
+    console.log(errorMessage);
+    return false;
+  }
 };
-
 // add event function (as admin)
 export const addEvent = async (eventData: EventProps) => {
   try {

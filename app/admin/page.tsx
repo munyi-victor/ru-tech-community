@@ -35,10 +35,10 @@ const Admin = () => {
   };
 
   const handlePhotoUpload = (e: any) => {
-    console.log(e.target.files[0]);
+    const selectedFile = e.target.files?.[0];
 
     const images = ref(storage, `images/${v4()}`);
-    uploadBytes(images, e.target.files[0]).then((data) => {
+    uploadBytes(images, selectedFile).then((data) => {
       console.log(data, "images");
       getDownloadURL(data.ref).then((val) => {
         setEventData({ ...eventData, eventPhoto: val });

@@ -22,8 +22,8 @@ const AboutUs = () => {
         <h2 className="font-semibold text-lg mt-2">What we do</h2>
         <p>
           At RUTC, we delve into a wide array of Google developer technologies.
-          Whether you're starting your developer journey or looking to expand
-          your skillset, we have something for you. Here's a glimpse into what
+          Whether you are starting your developer journey or looking to expand
+          your skillset, we have something for you. Here is a glimpse into what
           we offer:
         </p>
         <ul>
@@ -44,7 +44,7 @@ const AboutUs = () => {
             Google Cloud Platform, including App Engine.
           </li>
           <li>
-            <b>Advanced APIs:</b> Learn about and utilize Google's advanced
+            <b>Advanced APIs:</b> Learn about and utilize Google&apos;s advanced
             product APIs like YouTube API, Maps API, and Chart Tools.
           </li>
         </ul>
@@ -88,7 +88,7 @@ const AboutUs = () => {
           <a href="https://x.com/DscRongo" className="text-blue-500">
             follow us on X
           </a>
-          . Let's build the future together!
+          Let us build the future together!
         </p>
       </div>
     </div>
