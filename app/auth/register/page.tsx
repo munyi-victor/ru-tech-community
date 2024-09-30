@@ -15,7 +15,7 @@ const RegistrationForm = () => {
     phoneNumber: "",
   });
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,

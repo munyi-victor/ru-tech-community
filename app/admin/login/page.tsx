@@ -63,3 +63,5 @@ const AdminLoginForm = () => {
     </div>
   );
 };
+
+export default AdminLoginForm;
