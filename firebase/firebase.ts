@@ -6,6 +6,8 @@ import {
   getDocs,
   query,
   where,
+  doc,
+  getDoc,
 } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getStorage } from "firebase/storage";
@@ -104,10 +106,26 @@ export const addEvent = async (eventData: EventProps) => {
 export const fetchEvents = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "events"));
-    const events = querySnapshot.docs.map((doc) => doc.data());
+    const events = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
     return events;
   } catch (error) {
     console.error("Error fetching events:", error);
+    throw error;
+  }
+};
+
+// fetch specific event details
+export const fetchEventById = async (eventId: string) => {
+  try {
+    const docRef = doc(db, "events", eventId);
+    const docSnap = await getDoc(docRef);
+    const event = docSnap.data() as EventProps;
+    return event;
+  } catch (error) {
+    console.error("Error fetching event:", error);
     throw error;
   }
 };

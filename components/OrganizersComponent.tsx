@@ -2,7 +2,7 @@ import OrganizerCard from "./cards/OrganizerCard";
 
 import { organizersData } from "@/lib/organizersData";
 
-const Organizers = () => {
+const OrganizersComponent = () => {
   return (
     <div className="container mx-auto px-10 py-6 border-b">
       <h1 className="text-2xl md:text-3xl font-bold mb-4">Organizers</h1>
@@ -15,4 +15,4 @@ const Organizers = () => {
   );
 };
 
-export default Organizers;
+export default OrganizersComponent;

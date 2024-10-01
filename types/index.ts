@@ -7,6 +7,7 @@ export interface UserProps {
 }
 
 export interface EventProps {
+  id: string;
   eventPhoto: string;
   title: string;
   shortDescription: string;

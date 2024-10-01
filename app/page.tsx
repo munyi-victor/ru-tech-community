@@ -2,7 +2,7 @@
 
 import LandingPage from "@/components/LandingPage";
 import AboutUs from "@/components/AboutUs";
-import Organizers from "@/components/Organizers";
+import Organizers from "@/components/OrganizersComponent";
 import ChapterPhotos from "@/components/ChapterPhotos";
 import Footer from "@/components/Footer";
 import UpcomingEvents from "@/components/UpcomingEvents";

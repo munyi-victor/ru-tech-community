@@ -14,4 +14,5 @@ module.exports = {
   images: {
     domains: ["firebasestorage.googleapis.com"],
   },
+  pageExtensions: ["ts", "tsx", "js", "jsx"],
 };

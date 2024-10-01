@@ -39,7 +39,7 @@ const EventsList = () => {
     <div className="events-list">
       {events.map((event) => (
         <div
-          key={event.title || event.title}
+          key={event.id}
           className="flex flex-col md:flex-row items-center justify-center gap-4 rounded border p-2"
         >
           {" "}
@@ -59,7 +59,10 @@ const EventsList = () => {
             <p className="text-gray-700">{event.shortDescription}</p>
 
             <div className="flex flexx-row gap-8">
-              <Link href={"#"} className="font-bold text-blue-500">
+              <Link
+                href={`/events/${event.id}`}
+                className="font-bold text-blue-500"
+              >
                 View details
               </Link>
               <button type="button" title="share this event" onClick={() => {}}>
