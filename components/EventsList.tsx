@@ -48,7 +48,7 @@ const EventsList = () => {
             alt={event.title}
             height={100}
             width={100}
-            className="w-[150px] h-[150px] rounded-full border"
+            className="w-3/4 md:w-[150px] h-[150px] rounded-md md:rounded-full border"
           />
           <div className="flex flex-col">
             <p className="font-semibold border-b">

@@ -13,6 +13,7 @@ const Admin = () => {
   const router = useRouter();
 
   const [eventData, setEventData] = useState({
+    id: "",
     eventPhoto: "",
     title: "",
     shortDescription: "",
