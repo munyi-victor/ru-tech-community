@@ -5,14 +5,14 @@ interface OrganizerCardProps {
   imageSource: string;
   fullName: string;
   position: string;
-  details: string;
+  id: string;
 }
 
 const OrganizerCard = ({
   imageSource,
   fullName,
   position,
-  details,
+  id,
 }: OrganizerCardProps) => {
   return (
     <div className="flex flex-col items-center justify-center">
@@ -26,7 +26,7 @@ const OrganizerCard = ({
       <h1 className="font-bold text-xl">{fullName}</h1>
       <h2 className="font-semibold text-gray-600 text-lg">{position}</h2>
       <Link
-        href={`/organizers/${details}`}
+        href={`/organizers/${id}`}
         className="font-bold text-blue-500 font-semibold"
       >
         View Profile

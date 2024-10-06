@@ -5,7 +5,7 @@ import { SlArrowRight } from "react-icons/sl";
 
 const Footer = () => {
   return (
-    <div className="container mx-auto px-10 py-6 pt-10 border-t">
+    <div className="container mx-auto px-10 py-4 pt-10 border-t">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <div className="flex items-center">
@@ -67,7 +67,11 @@ const Footer = () => {
         <h2 className="text-sm">&copy; 2024, RU Tech Community.</h2>
         <h2 className="text-sm">
           Made by{" "}
-          <Link href={"https://x.com/munyi_victor"} className="text-blue-500">
+          <Link
+            href={"https://x.com/munyi_victor"}
+            target="_blank"
+            className="text-blue-500"
+          >
             Munyi Victor
           </Link>
         </h2>

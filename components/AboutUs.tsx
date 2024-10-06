@@ -85,7 +85,11 @@ const AboutUs = () => {
         <p>
           For more information on the global GDG program and how to get involved
           with RUTC specifically,{" "}
-          <a href="https://x.com/DscRongo" className="text-blue-500">
+          <a
+            href="https://x.com/DscRongo"
+            target="_blank"
+            className="text-blue-500"
+          >
             follow us on X.{" "}
           </a>
           Let us build the future together!

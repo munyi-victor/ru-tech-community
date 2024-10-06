@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { loginWithEmail } from "@/firebase/firebase";
 
 import { useAuth } from "@/lib/context/AuthContext";
+import Link from "next/link";
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -53,6 +54,13 @@ const LoginForm = () => {
           Login
         </button>
       </form>
+      <h2 className="flex items-center justify-center">
+        Not yet registered?
+        <Link href={"/auth/register"} className="text-blue-500 ml-2">
+          Register here
+        </Link>
+        .
+      </h2>
     </div>
   );
 };
