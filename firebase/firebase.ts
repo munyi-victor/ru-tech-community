@@ -8,6 +8,7 @@ import {
   where,
   doc,
   getDoc,
+  Firestore,
 } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getStorage } from "firebase/storage";
@@ -26,7 +27,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const db = getFirestore(app);
 const auth = getAuth(app);
 export const storage = getStorage(app);
 
@@ -102,21 +103,6 @@ export const addEvent = async (eventData: EventProps) => {
   }
 };
 
-// fetch event function (home page - component)
-export const fetchEvents = async () => {
-  try {
-    const querySnapshot = await getDocs(collection(db, "events"));
-    const events = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    return events;
-  } catch (error) {
-    console.error("Error fetching events:", error);
-    throw error;
-  }
-};
-
 // fetch specific event details
 export const fetchEventById = async (eventId: string) => {
   try {
@@ -128,4 +114,19 @@ export const fetchEventById = async (eventId: string) => {
     console.error("Error fetching event:", error);
     throw error;
   }
+};
+
+// fetch events by date
+export const fetchUpcomingEvents = async (db: Firestore) => {
+  const now = new Date();
+  const fetchQuery = query(collection(db, "events"), where("date", ">=", now));
+  const snapshot = await getDocs(fetchQuery);
+  return snapshot.docs.map((doc) => doc.data());
+};
+
+export const fetchPastEvents = async (db: Firestore) => {
+  const now = new Date();
+  const fetchQuery = query(collection(db, "events"), where("date", "<", now));
+  const snapshot = await getDocs(fetchQuery);
+  return snapshot.docs.map((doc) => doc.data());
 };
