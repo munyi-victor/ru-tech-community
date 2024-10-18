@@ -103,6 +103,21 @@ export const addEvent = async (eventData: EventProps) => {
   }
 };
 
+// fetch event function (home page - component)
+// export const fetchEvents = async () => {
+//   try {
+//     const querySnapshot = await getDocs(collection(db, "events"));
+//     const events = querySnapshot.docs.map((doc) => ({
+//       id: doc.id,
+//       ...doc.data(),
+//     }));
+//     return events;
+//   } catch (error) {
+//     console.error("Error fetching events:", error);
+//     throw error;
+//   }
+// };
+
 // fetch specific event details
 export const fetchEventById = async (eventId: string) => {
   try {

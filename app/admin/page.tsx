@@ -19,7 +19,7 @@ const Admin = () => {
     shortDescription: "",
     detailedDescription: "",
     keyTheme: "",
-    date: "",
+    date: new Date(),
     location: "",
   });
 
@@ -161,7 +161,7 @@ const Admin = () => {
             type="date"
             className="w-full border border-gray-300 text-gray-700 rounded-lg py-2 px-4"
             name="date"
-            value={eventData.date}
+            value={eventData.date.toLocaleDateString("en-US")}
             onChange={handleChange}
             required
             placeholder="Date of the event"

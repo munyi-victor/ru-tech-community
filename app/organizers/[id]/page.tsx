@@ -8,7 +8,7 @@ const Organizer = ({ params }: { params: { id: string } }) => {
   const organizerData = organizersData.filter((orgId) => orgId.id === id);
   return (
     <>
-      <div className="flex flex-col items-center justify-center py-6">
+      <div className="flex flex-col items-center justify-center py-6 px-10 mx-auto">
         {organizerData.map((organizer) => (
           <div
             key={organizer.id}

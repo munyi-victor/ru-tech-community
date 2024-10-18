@@ -6,6 +6,7 @@ import { db, fetchPastEvents, fetchUpcomingEvents } from "@/firebase/firebase";
 import { EventProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "@/lib/context/AuthContext";
 
 import { CiShare2 } from "react-icons/ci";
 
@@ -13,20 +14,31 @@ const EventsList = () => {
   const [upcomingEvents, setUpcomingEvents] = useState<EventProps[]>([]);
   const [pastEvents, setPastEvents] = useState<EventProps[]>([]);
 
+  const { pastEvent } = useAuth();
+
   useEffect(() => {
-    const fetchEventsData = async () => {
+    const fetchUpcomingEventsData = async () => {
       try {
         const fetchedUpcomingEvents = await fetchUpcomingEvents(db);
         setUpcomingEvents(fetchedUpcomingEvents as EventProps[]);
-        // const fetchedEvents = await fetchEvents();
-        const fetchedPastEvents = await fetchPastEvents(db);
-        setPastEvents(fetchedPastEvents as EventProps[]);
       } catch (error) {
         console.error("Error fetching events:", error);
       }
     };
 
-    fetchEventsData();
+    const fetchPastEventsData = async () => {
+      try {
+        const fetchedPastEvents = await fetchPastEvents(db);
+        setPastEvents(fetchedPastEvents as EventProps[]);
+        console.log(fetchedPastEvents);
+        pastEvent();
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUpcomingEventsData();
+    fetchPastEventsData();
   }, []);
 
   return (
@@ -48,7 +60,7 @@ const EventsList = () => {
             />
             <div className="flex flex-col">
               <p className="font-semibold border-b">
-                {new Date(event.date).toLocaleDateString() || event.date} |{" "}
+                {new Date(event.date.toDate()).toLocaleDateString()} |{" "}
                 {event.location}
               </p>
               <h2 className="text-lg md:text-xl font-semibold">
@@ -93,7 +105,7 @@ const EventsList = () => {
             />
             <div className="flex flex-col">
               <p className="font-semibold border-b">
-                {new Date(event.date).toLocaleDateString() || event.date} |{" "}
+                {new Date(event.date.toDate()).toLocaleDateString()} |{" "}
                 {event.location}
               </p>
               <h2 className="text-lg md:text-xl font-semibold">

@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface UserProps {
   firstName: string;
   lastName: string;
@@ -13,6 +15,6 @@ export interface EventProps {
   shortDescription: string;
   detailedDescription: string;
   keyTheme: string;
-  date: string;
+  date: Timestamp;
   location: string;
 }

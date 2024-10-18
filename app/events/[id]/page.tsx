@@ -15,7 +15,7 @@ import RSVPModal from "@/components/RSVPModal";
 import { useAuth } from "@/lib/context/AuthContext";
 
 const EventDetails = ({ params }: { params: { id: string } }) => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, isPastEvent } = useAuth();
   const router = useRouter();
   const { id } = params;
   const [event, setEvent] = useState<EventProps | null>(null);
@@ -84,7 +84,7 @@ const EventDetails = ({ params }: { params: { id: string } }) => {
                   <h2 className="font-semibold text-md">When</h2>
                 </div>
                 <h2 className="font-bold text-gray-700">
-                  {new Date(event.date).toLocaleDateString() || event.date}
+                  {new Date(event.date.toDate()).toLocaleDateString()}
                 </h2>
               </div>
             </div>
@@ -96,12 +96,16 @@ const EventDetails = ({ params }: { params: { id: string } }) => {
           <p>{event.detailedDescription}</p>
         </div>
         <div className="mt-6 flex items-center justify-center">
-          <button
-            onClick={handleClick}
-            className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600"
-          >
-            {isLoggedIn ? "RSVP" : "Login to RSVP"}
-          </button>
+          {isPastEvent ? (
+            ""
+          ) : (
+            <button
+              onClick={handleClick}
+              className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600"
+            >
+              {isLoggedIn ? "RSVP" : "Login to RSVP"}
+            </button>
+          )}
           {modalOpen && <RSVPModal closeModal={closeModal} />}
         </div>
       </div>

@@ -1,10 +1,26 @@
 "use client";
 
+import { useState } from "react";
+
 interface ModalProps {
   closeModal: () => void;
 }
 
 const RSVPModal = ({ closeModal }: ModalProps) => {
+  const [formData, setFormData] = useState({
+    learningAboutEvent: "",
+    developerExperience: "",
+    whatToLearn: "",
+  });
+
+  const handleChange = (e: { target: { name: string; value: string } }) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   return (
     <>
       <div
@@ -21,7 +37,35 @@ const RSVPModal = ({ closeModal }: ModalProps) => {
             &times;
           </span>
 
-          <form className="flex flex-col space-y-4"></form>
+          <form className="flex flex-col space-y-4">
+            <h2 className="text-2xl font-semibold mb-4">
+              Attendee information
+            </h2>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-2">
+                How did you learn about this event?
+              </label>
+              <select
+                id="learning-about-event"
+                className="w-full border border-gray-300 text-gray-700 rounded-lg py-2 px-4"
+                value={formData.learningAboutEvent}
+                onChange={handleChange}
+              >
+                <option value="">Select experience</option>
+                <option value="social">Social meadia</option>
+                <option value="community">Notified by this community</option>
+                <option value="friend">Recommended by a friend or peer</option>
+              </select>
+              <input
+                type="text"
+                className="w-full border border-gray-300 text-gray-700 rounded-lg py-2 px-4"
+                name="firstName"
+                value={""}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </form>
         </div>
       </div>
     </>
